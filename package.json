@@ -1,0 +1,31 @@
+{
+  "name": "create-base-project",
+  "version": "0.1.0",
+  "description": "a front-end scaffold tool",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin": {
+    "create-base-project": "index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/codeoD/create-base-project.git"
+  },
+  "keywords": [
+    "scaffold",
+    "vue"
+  ],
+  "author": "lee",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/codeoD/create-base-project/issues"
+  },
+  "homepage": "https://github.com/codeoD/create-base-project#readme",
+  "dependencies": {
+    "kolorist": "^1.5.1",
+    "minimist": "^1.2.5",
+    "prompts": "^2.4.2"
+  }
+}
