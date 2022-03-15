@@ -1,13 +1,13 @@
 {
-  "name": "@lee/create-base-project",
-  "version": "0.1.0",
+  "name": "@lee's/create-base-project",
+  "version": "0.1.1",
   "description": "a front-end scaffold tool",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "bin": {
-    "create-base-project": "index.js"
+    "@lee's/create-base-project": "index.js"
   },
   "repository": {
     "type": "git",
