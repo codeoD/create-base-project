@@ -1,6 +1,6 @@
 {
   "name": "create-bp",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "a front-end scaffold tool",
   "main": "index.js",
   "scripts": {
