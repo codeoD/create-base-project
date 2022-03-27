@@ -6,7 +6,9 @@
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
     "preview": "vite preview",
-    "prepare": "git init && husky install"
+    "prepare": "git init && husky install",
+    "lint": "eslint --fix --ext .js,.jsx,.ts,.tsx,.vue ./src",
+    "check": "prettier --check ./src/**/*.{vue,ts,tsx}"
   },
   "dependencies": {
     "autoprefixer": "^10.4.4",
@@ -33,12 +35,9 @@
     "vue-tsc": "^0.29.8"
   },
   "lint-staged": {
-    "*.js": [
+    "*.{js,jsx,ts,tsx,vue}": [
+      "eslint --fix",
       "prettier --write"
-    ],
-    "*.ts?(x)": [
-      "eslint",
-      "prettier --parser=typescript --write"
     ]
   },
   "browserslist": [
