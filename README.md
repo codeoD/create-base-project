@@ -22,7 +22,7 @@
 
    使用 eslint 进行代码检查，使用 prettier 格式化代码。
 
-   安装 eslint @typescript-eslint/parser @typescript-eslint/eslint-plugin eslint-plugin-prettier prettier 等依赖，prettier 建议使用精确安装（--save-exact），然后以 eslint 为基础进行配置。prettier 的配置尽量通过配置文件[.prettierrc](https://prettier.io/docs/en/configuration.html)书写，因为如 prettier-vscode 的编辑器扩展会读取 prettier 配置文件里的内容，但不会从 ESLint 读取配置，这将导致不一样的体验。
+   安装 eslint prettier 等依赖，prettier 建议使用精确安装（--save-exact），然后以 eslint 为基础进行配置。prettier 的配置尽量通过配置文件[.prettierrc](https://prettier.io/docs/en/configuration.html)书写，因为如 prettier-vscode 的编辑器扩展会读取 prettier 配置文件里的内容，但不会从 ESLint 读取配置，这将导致不一样的体验。
 
    [相关阅读](https://typescript-eslint.io/docs/linting/)
 

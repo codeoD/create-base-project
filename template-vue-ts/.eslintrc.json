@@ -17,7 +17,7 @@
       "files": ["*.vue"],
       "parser": "vue-eslint-parser",
       "parserOptions": {
-        "parser": "@typescript-eslint/parser",
+        "parser": "@typescript-eslint/parser"
       }
     }
   ],
@@ -28,8 +28,7 @@
         "allowString": false,
         "allowNumber": false
       }
-    ],
-    "prettier/prettier": "error"
+    ]
   },
-  "ignorePatterns": ["src/**/*.test.ts", "src/frontend/generated/*"]
+  "ignorePatterns": []
 }
