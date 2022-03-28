@@ -1,11 +1,12 @@
 <template>
   <div class="content-model">
     <HeadModel></HeadModel>
-    <main class="main-content">
-      <router-view></router-view>
-      <!-- <slot name="route"></slot> -->
-      <div>@2022 lee</div>
-    </main>
+    <div class="content-layout">
+      <main>
+        <router-view></router-view>
+      </main>
+      <div class="footer">@2022 lee</div>
+    </div>
   </div>
 </template>
 <script lang="ts">
@@ -24,8 +25,16 @@ export default defineComponent({
   width: 0;
   flex: auto;
   flex-direction: column;
-  & .main-content {
+  & .content-layout {
     flex: 1;
+    display: flex;
+    flex-direction: column;
+    & main {
+      flex: 1;
+    }
+    & .footer {
+      text-align: center;
+    }
   }
 }
 </style>

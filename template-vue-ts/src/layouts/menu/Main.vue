@@ -46,6 +46,9 @@ export default defineComponent({
               onClick={() => {
                 console.log(that);
                 that.activedItem = data[i]?.meta?.text;
+                that.$router.push({
+                  name: data[i]?.name,
+                })
               }}
             ></MenuItem>
           );
