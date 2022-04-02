@@ -1,3 +1,29 @@
+## 介绍
+
+一个基于 vite 和 vue3 及其他现代 web 技术的工程基础架构。
+
+## 安装使用
+
+> vite 需要[Node.js](https://nodejs.org/en/)版本 >= 12.0.0
+
+本项目目前仅支持 vue-ts 模板，后续提供其他模板的支持，部分代码参考 vite 模板仓库。
+
+```powershell
+# npm 6.x
+npm init bp@latest my-vue-app --template vue-ts
+
+# npm 7+, 需要额外的双横线：
+npm init bp@latest my-vue-app -- --template vue-ts
+
+# yarn
+yarn create bp my-vue-app --template vue-ts
+
+# pnpm
+pnpm create bp my-vue-app -- --template vue-ts
+```
+
+## 实现功能及采用技术
+
 1. 封装请求
 
    异步请求采用浏览器 API [fetch](https://developer.mozilla.org/zh-CN/docs/Web/API/Fetch_API/Using_Fetch)实现，封装实现统一的接口请求和错误处理，以及对不同网络状态的响应。
@@ -36,8 +62,57 @@
 
 ---
 
-期间遇到的一些问题：
+## 期间遇到的一些问题：
 
-1. Q:Cannot access 'xxx' before initialization
+1. Q: Cannot access 'xxx' before initialization
 
-   A:这种就是遇到了循环依赖的问题，解除循环依赖即可。[ESM 虽然支持循环依赖，但也有限制](https://github.com/vitejs/vite/issues/4430#issuecomment-979013114)。
+   A: 这种就是遇到了循环依赖的问题，解除循环依赖即可。[ESM 虽然支持循环依赖，但也有限制](https://github.com/vitejs/vite/issues/4430#issuecomment-979013114)。
+
+2. Q: Cannot find module 'estree' or its corresponding type declarations.
+
+   A: 缺少 estree 的类型声明文件，需要安装@types/estree
+
+3. Q: 如何将打包后代码转换为 ES5
+
+   A: 默认情况下，Vite 的目标浏览器是指能够 支持原生 ESM script 标签 和 支持原生 ESM 动态导入的。esbuild 暂不支持转换成 ES5 的语法，因此 vite 的 build.target 最低只能是 es2015， 同时也不包含任何 polyfill。[详细信息](https://vitejs.cn/guide/build.html#browser-compatibility) [esbuild](https://esbuild.github.io/content-types/#javascript)
+   但是利用插件你可以做到对传统浏览器的支持，[@vitejs/plugin-legacy](https://github.com/vitejs/vite/tree/main/packages/plugin-legacy)
+
+4. Q: 如何利用 babel 针对新特性引入 polyfill
+
+   A: 安装插件@rollup/plugin-babel，在 vite 配置中提供如下配置
+
+   ```js
+   import { getBabelOutputPlugin } from "@rollup/plugin-babel";
+   // ...
+   export default {
+     // ...
+     build: {
+       rollupOptions: {
+         plugins: [
+           getBabelOutputPlugin({
+             configFile: "./.babelrc.json",
+             // 或者使用内联配置
+           }),
+         ],
+       },
+     },
+   };
+   ```
+
+   `.babelrc.json`中如下配置
+
+   ```json
+   {
+     "presets": [
+       [
+         "@babel/preset-env",
+         {
+           "corejs": {
+             "version": 3.8
+           },
+           "useBuiltIns": "usage"
+         }
+       ]
+     ]
+   }
+   ```
